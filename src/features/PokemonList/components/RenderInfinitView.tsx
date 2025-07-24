@@ -3,7 +3,7 @@ import { Loader2 } from "lucide-react";
 import PokemonGrid from "./PokemonGrid";
 import type { Pokemon, PokemonListResponse, ViewMode } from "@/types/pokemon";
 import PokemonSkeletonGrid from "./PokemonSkeletonGrid";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "@/components/ErrorMessage";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getPokemonsWithOffset } from "../api/getPokemonList";
 

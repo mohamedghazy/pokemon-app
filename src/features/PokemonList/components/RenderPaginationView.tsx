@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "@/components/ErrorMessage";
 import PaginationControls from "./PaginationControls";
 import PokemonGrid from "./PokemonGrid";
 import PokemonSkeletonGrid from "./PokemonSkeletonGrid";

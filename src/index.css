@@ -80,35 +80,19 @@
   --steel: oklch(68% 0.02 220);
 
   /* Gradients - these are fine as direct CSS vars for `background-image` */
-  --gradient-fire: linear-gradient(
-    135deg,
-    oklch(var(--fire)),
-    oklch(55% 0.16 14)
-  );
-  --gradient-water: linear-gradient(
-    135deg,
-    oklch(var(--water)),
-    oklch(60% 0.12 211)
-  );
-  --gradient-grass: linear-gradient(
-    135deg,
-    oklch(var(--grass)),
-    oklch(50% 0.13 120)
-  );
+  --gradient-fire: linear-gradient(135deg, var(--fire), hsl(14 80% 55%));
+  --gradient-water: linear-gradient(135deg, var(--water), hsl(211 75% 60%));
+  --gradient-grass: linear-gradient(135deg, var(--grass), hsl(120 50% 50%));
   --gradient-electric: linear-gradient(
     135deg,
-    oklch(var(--electric)),
-    oklch(75% 0.15 48)
+    var(--electric),
+    hsl(48 85% 55%)
   );
-  --gradient-psychic: linear-gradient(
-    135deg,
-    oklch(var(--psychic)),
-    oklch(55% 0.12 300)
-  );
+  --gradient-psychic: linear-gradient(135deg, var(--psychic), hsl(300 50% 60%));
   --gradient-pokemon: linear-gradient(
     135deg,
-    oklch(var(--pokemon-mint)),
-    oklch(88% 0.04 150)
+    var(--pokemon-mint),
+    hsl(150 25% 88%)
   );
 
   /* YOUR NEW CSS VARIABLE (Light Mode) */
@@ -264,15 +248,6 @@ h1 {
   /* Add your new custom color mappings */
   --color-my-custom: var(--my-custom-color);
   --color-my-custom-foreground: var(--my-custom-color-foreground);
-
-  /* For gradients, you define them under a background-image property */
-  --background-image-gradient-fire: var(--gradient-fire);
-  --background-image-gradient-water: var(--gradient-water);
-  --background-image-gradient-grass: var(--gradient-grass);
-  --background-image-gradient-electric: var(--gradient-electric);
-  --background-image-gradient-psychic: var(--gradient-psychic);
-  --background-image-gradient-pokemon: var(--gradient-pokemon);
-
   /* NO @custom-variant HERE! This was the error. */
 }
 
@@ -332,4 +307,22 @@ h1 {
   body {
     @apply bg-background text-foreground;
   }
+}
+.bg-gradient-fire {
+  background-image: var(--gradient-fire);
+}
+.bg-gradient-water {
+  background-image: var(--gradient-water);
+}
+.bg-gradient-grass {
+  background-image: var(--gradient-grass);
+}
+.bg-gradient-electric {
+  background-image: var(--gradient-electric);
+}
+.bg-gradient-psychic {
+  background-image: var(--gradient-psychic);
+}
+.bg-gradient-pokemon {
+  background-image: var(--gradient-pokemon);
 }
