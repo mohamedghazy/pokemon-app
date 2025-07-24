@@ -1,20 +1,19 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* 1. Define your base CSS variables for light mode */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -31,14 +30,19 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+
+  /* Chart colors */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Sidebar colors */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -47,6 +51,115 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Pokemon colors */
+  --pokemon-mint: oklch(91.5% 0.05 150);
+  --pokemon-card: oklch(100% 0 0);
+  --pokemon-shadow: oklch(79.5% 0.02 150);
+  --pokemon-text: oklch(25% 0.02 260);
+  --pokemon-text-light: oklch(50% 0.01 260);
+
+  /* Pokemon type colors */
+  --fire: oklch(65% 0.14 14);
+  --water: oklch(70% 0.1 211);
+  --grass: oklch(60% 0.11 120);
+  --electric: oklch(85% 0.13 48);
+  --psychic: oklch(65% 0.1 300);
+  --ice: oklch(78% 0.07 180);
+  --dragon: oklch(60% 0.08 270);
+  --dark: oklch(25% 0.01 270);
+  --fairy: oklch(78% 0.1 320);
+  --normal: oklch(70% 0.01 0);
+  --fighting: oklch(55% 0.12 10);
+  --poison: oklch(60% 0.11 270);
+  --ground: oklch(55% 0.08 45);
+  --flying: oklch(70% 0.08 220);
+  --bug: oklch(55% 0.1 75);
+  --rock: oklch(50% 0.07 35);
+  --ghost: oklch(55% 0.07 270);
+  --steel: oklch(68% 0.02 220);
+
+  /* Gradients - these are fine as direct CSS vars for `background-image` */
+  --gradient-fire: linear-gradient(
+    135deg,
+    oklch(var(--fire)),
+    oklch(55% 0.16 14)
+  );
+  --gradient-water: linear-gradient(
+    135deg,
+    oklch(var(--water)),
+    oklch(60% 0.12 211)
+  );
+  --gradient-grass: linear-gradient(
+    135deg,
+    oklch(var(--grass)),
+    oklch(50% 0.13 120)
+  );
+  --gradient-electric: linear-gradient(
+    135deg,
+    oklch(var(--electric)),
+    oklch(75% 0.15 48)
+  );
+  --gradient-psychic: linear-gradient(
+    135deg,
+    oklch(var(--psychic)),
+    oklch(55% 0.12 300)
+  );
+  --gradient-pokemon: linear-gradient(
+    135deg,
+    oklch(var(--pokemon-mint)),
+    oklch(88% 0.04 150)
+  );
+
+  /* YOUR NEW CSS VARIABLE (Light Mode) */
+  --my-custom-color: oklch(75% 0.15 280); /* Example: a nice purple */
+  --my-custom-color-foreground: oklch(98% 0 0); /* White for text on purple */
+}
+
+/* 2. Define your base CSS variables for dark mode */
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+
+  /* Chart colors (Dark Mode) */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  /* Sidebar colors (Dark Mode) */
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+
+  /* YOUR NEW CSS VARIABLE (Dark Mode) */
+  --my-custom-color: oklch(
+    60% 0.18 290
+  ); /* A slightly different purple for dark mode */
+  --my-custom-color-foreground: oklch(10% 0 0); /* Dark text for contrast */
 }
 
 a {
@@ -61,6 +174,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -78,16 +192,15 @@ h1 {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
-@theme inline {
+/* 3. Define Tailwind mappings in the @theme block */
+@theme {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -103,14 +216,17 @@ h1 {
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -119,42 +235,96 @@ h1 {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --color-pokemon-mint: var(--pokemon-mint);
+  --color-pokemon-card: var(--pokemon-card);
+  --color-pokemon-shadow: var(--pokemon-shadow);
+  --color-pokemon-text: var(--pokemon-text);
+  --color-pokemon-text-light: var(--pokemon-text-light);
+
+  --color-fire: var(--fire);
+  --color-water: var(--water);
+  --color-grass: var(--grass);
+  --color-electric: var(--electric);
+  --color-psychic: var(--psychic);
+  --color-ice: var(--ice);
+  --color-dragon: var(--dragon);
+  --color-dark: var(--dark);
+  --color-fairy: var(--fairy);
+  --color-normal: var(--normal);
+  --color-fighting: var(--fighting);
+  --color-poison: var(--poison);
+  --color-ground: var(--ground);
+  --color-flying: var(--flying);
+  --color-bug: var(--bug);
+  --color-rock: var(--rock);
+  --color-ghost: var(--ghost);
+  --color-steel: var(--steel);
+
+  /* Add your new custom color mappings */
+  --color-my-custom: var(--my-custom-color);
+  --color-my-custom-foreground: var(--my-custom-color-foreground);
+
+  /* For gradients, you define them under a background-image property */
+  --background-image-gradient-fire: var(--gradient-fire);
+  --background-image-gradient-water: var(--gradient-water);
+  --background-image-gradient-grass: var(--gradient-grass);
+  --background-image-gradient-electric: var(--gradient-electric);
+  --background-image-gradient-psychic: var(--gradient-psychic);
+  --background-image-gradient-pokemon: var(--gradient-pokemon);
+
+  /* NO @custom-variant HERE! This was the error. */
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+/* 4. Define dark mode overrides using @custom-variant outside @theme */
+@custom-variant dark {
+  /* You redeclare the Tailwind-facing theme variables here,
+     but point them to your .dark-specific raw CSS variables. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(
+    --accent
+  ); /* Typo corrected: was var(--sidebar-accent) but then needs to resolve to a dark variant */
+  --color-sidebar-accent-foreground: var(
+    --accent-foreground
+  ); /* Typo corrected */
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Map your new custom color for dark mode */
+  --color-my-custom: var(--my-custom-color);
+  --color-my-custom-foreground: var(--my-custom-color-foreground);
 }
 
+/* 5. Base layers for Tailwind */
 @layer base {
   * {
     @apply border-border outline-ring/50;
